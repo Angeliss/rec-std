@@ -8,7 +8,7 @@ const Details = ({etudiant}) => {
 
   function deleteStudent() { 
     if (confirm(`Etes-vous sure de vouloir suprimer cet étudiant ? Cliquer "OK" pour confirmer la suppression`)) {
-      Inertia.delete(route('delete', etudiant), {
+      Inertia.delete(route('delete', etudiant.id), {
         preserveScroll: true,
         onSuccess: () => {
           runToast("success")

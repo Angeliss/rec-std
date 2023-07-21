@@ -1,6 +1,7 @@
 <?php
 
 use Inertia\Inertia;
+use App\Models\Student;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
@@ -19,7 +20,13 @@ use App\Http\Controllers\StudentController;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Dash', []);
+    $std = Student::latest()->limit(5)->get();
+    $std->load('level');
+    $std->load('studySector');
+
+    return Inertia::render('Dash', [
+        'latest' => $std
+    ]);
 })->name('dashboard');
 Route::get('/parametre', [SettingController::class, 'index'])->name('setting');
 Route::post('/parametre/add-level', [SettingController::class, 'storeLevel'])->name('add-level');

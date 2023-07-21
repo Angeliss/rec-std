@@ -2,7 +2,7 @@ import React from 'react'
 import AppLayout from '@/Layouts/AppLayout';
 import { Head } from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
-const Dash = () => {
+const Dash = ({latest}) => {
   return (
     <AppLayout>
       <Head title="Dashboard" />
@@ -13,27 +13,41 @@ const Dash = () => {
             <h1 className="section-title">Tableau de bord</h1>
             <div className="recent-order">
                 <h2>Ajout Recent</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nom & Prénoms</th>
-                            <th>Matricule</th>
-                            <th>Niveau</th>
-                            <th>Filiaire</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>BINDIE Ange</td>
-                            <td>BAN231290001</td>
-                            <td>Licence Professionnelle</td>
-                            <td>GI</td>
-                            <td className="txt-primary">Details</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {/* <a href="#">Voir la liste complète</a> */}
+                {
+                    latest.length > 0 ?
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom & Prénoms</th>
+                                <th>Matricule</th>
+                                <th>Niveau</th>
+                                <th>Filiaire</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                latest.map((etd) => (
+                                    <tr key={etd.id}>
+                                        <td>{etd.lastname+' '+etd.firstname}</td>
+                                        <td>{etd.matricule}</td>
+                                        <td>{etd.level.label}</td>
+                                        <td>{etd.study_sector.label}</td>
+                                        <td>
+                                            <NavLink href={route('show', etd.id)}>
+                                                <span type='button' className='button primary small'><span className='mif-plus'></span> Détails</span>
+                                            </NavLink>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
+                        </tbody>
+                    </table>
+                    :
+                    <div className="remark danger">
+                        Pas d'étudiant enregistré
+                    </div>
+                }
                 <NavLink href={route('students')}>
                     <h3 className='a-link'>Voir la liste complète</h3>
                 </NavLink>

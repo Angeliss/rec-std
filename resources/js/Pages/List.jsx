@@ -36,9 +36,9 @@ const List = ({etudiants}) => {
                                         <td>{etudiant.level.label}</td>
                                         <td>{etudiant.study_sector.label}</td>
                                         <td>
-                                            <NavLink href={route('delete', etudiant.id)}>
+                                            {/* <NavLink href={route('delete', etudiant.id)}>
                                                 <button className='button alert small'><span className='mif-bin'></span> Supprimer</button>
-                                            </NavLink> |
+                                            </NavLink> | */}
                                             <NavLink href={route('show', etudiant.id)}>
                                                 <span type='button' className='button primary small'><span className='mif-plus'></span> Détails</span>
                                             </NavLink>
