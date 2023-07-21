@@ -5,6 +5,7 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
 import '../../css/style.css';
+import SearchForm from '@/Components/SearchForm';
 
 export default function AppLayout({ header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
@@ -44,9 +45,9 @@ export default function AppLayout({ header, children }) {
                 <button id="menu-btn">
                     <span className="mif-menu"></span>
                 </button>
-                <form action="" className="top-search-form">
-                    <input type="text" data-role="input" data-search-button="true" />
-                </form>
+
+                <SearchForm />
+                
                 <div className="theme-toggler">
                     <span className="mif-sun active"></span>
                     <span className="mif-moon2"></span>

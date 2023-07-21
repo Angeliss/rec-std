@@ -39,6 +39,7 @@ Route::post('/students/add', [StudentController::class, 'store'])->name('store')
 Route::get('/students/{id}/edit', [StudentController::class, 'edit'])->name('edit');
 Route::post('/students/{id}/edit', [StudentController::class, 'update'])->name('update');
 Route::delete('/students/{id}/delete', [StudentController::class, 'destroy'])->name('delete');
+Route::get('/students/search', [StudentController::class, 'searching'])->name('search');
 
 // Route::get('/', function () {
 //     return Inertia::render('Dash', [

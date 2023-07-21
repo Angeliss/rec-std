@@ -191,4 +191,17 @@ class StudentController extends Controller
         Student::findOrFail($id)->delete();
         return to_route('students');
     }
+
+    public function searching(Request $request) {
+        $etudiants = Student::where('matricule', 'LIKE', "%{$request->mat}%")->get();
+        $etudiants->load('level');
+        $etudiants->load('studySector');
+
+        // if ($etudiants->count() > 0) {
+        //     return Inertia::render('Search', compact('etudiants'));
+        // } else {
+        //     return back()->with('error', "Cet matricule ne correspond à aucun enregistrement");
+        // }
+        return Inertia::render('Search', compact('etudiants'));
+    }
 }

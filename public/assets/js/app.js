@@ -6,3 +6,23 @@ function runToast(mode) {
 		default: toast("This is default toast");
 	}
 }
+
+function runInfo(mode, message) {
+	// let info = Metro.infobox.create();
+	switch (mode) {
+		case 'error':
+			// info.setType('alert')
+			// info.setContent(message)
+			// info.open()
+			Metro.infobox.create(message, "alert")
+			break;
+		case 'info':
+			info.setType('info')
+			info.setContent(message)
+			info.open()
+		break
+	
+		default:
+			break;
+	}
+}
