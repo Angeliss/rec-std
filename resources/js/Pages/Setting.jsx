@@ -72,7 +72,7 @@ const Setting = ({levels, study_sectors}) => {
                       </table>
                       :
                       <div className='remark danger'> 
-                        Pas de niveau d'étude enregistré !
+                        Pas de niveau d'étude enregistré 
                       </div>
                     }
                   </div>
