@@ -196,12 +196,6 @@ class StudentController extends Controller
         $etudiants = Student::where('matricule', 'LIKE', "%{$request->mat}%")->get();
         $etudiants->load('level');
         $etudiants->load('studySector');
-
-        // if ($etudiants->count() > 0) {
-        //     return Inertia::render('Search', compact('etudiants'));
-        // } else {
-        //     return back()->with('error', "Cet matricule ne correspond à aucun enregistrement");
-        // }
         return Inertia::render('Search', compact('etudiants'));
     }
 }
